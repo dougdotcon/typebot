@@ -1,0 +1,70 @@
+/* Estilos básicos para o cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #075E54;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo do WhatsApp */
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.header .logo span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Campo de pesquisa */
+.header .search {
+    position: relative;
+}
+
+.header .search input {
+    padding: 5px 10px;
+    padding-right: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.header .search img {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+}
+
+/* Ícones de notificações e configurações */
+.header .icons {
+    display: flex;
+    gap: 15px;
+}
+
+.header .icons img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Efeitos de hover */
+.header .search input:hover,
+.header .search input:focus,
+.header .icons img:hover {
+    opacity: 0.8;
+}
+
