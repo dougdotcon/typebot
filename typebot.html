@@ -1,0 +1,907 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="https://i.postimg.cc/k58JwdqX/soon-873316-1280-1.webp">
+<link href="https://fonts.bunny.net/css2?family=Open Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&amp;display=swap');')" rel="stylesheet" id="bot-font">
+<title>WhatsApp Web</title>
+<style>
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(170, 170, 170);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(212, 209, 209, 0.2);
+  }
+
+  body {
+    background-color: #e5ddd5;
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
+  }
+
+  .chat-container {
+    background: url('https://s3.fr-par.scw.cloud/typebot/public/typebots/cli88mae30010mh0f0yzjqn48/background?v=1685470080750');
+    
+  }
+
+  .chat-header {
+    background-color: #005e54;
+    height: 60px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chat-user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .chat-info-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-user-name {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .chat-user-name svg {
+    margin-left: 4px;
+  }
+
+  .chat-user-status {
+    color: #fff;
+    font-size: 13px;
+  }
+
+  .chatbox {
+    max-width: 728px;
+    margin: 0 auto;
+    height: 618px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 30px;
+  }
+
+  .textConversa {
+    display: flex;
+    align-items: center;
+    width: 68px;
+    min-height: 37px;
+    margin: 10px 20px;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+    font-size: 16px;
+    transition: width .4s ease-in-out;
+    box-sizing: border-box;
+  }
+
+  .textConversa p {
+    color: #303235;
+    background-color: #ffffff;
+    font-size: 16px;
+    word-spacing: 0px;
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+    animation: fade-in 1s ease-out;
+  }
+
+  .textConversa.business-account {
+    width: fit-content;
+    background-color: #d5f4f0;
+    gap: 4px;
+    margin: 20px auto;
+  }
+  @media(max-width: 567px) {
+    .textConversa.business-account {
+      margin: 20px;
+    }
+  }
+  .textConversa.business-account p {
+    background-color: #d5f4f0;
+    color: #53676b;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    opacity: 1;
+    animation: none;
+  }
+
+  .textConversa:has(> img),
+  .textConversa:has(> iframe) {
+    padding: 16px;
+  }
+
+  .textConversa img {
+    border-radius: 6px;
+    max-height: 512px;
+    height: auto;
+    width: 100%;
+    animation: fade-in .4s ease-out;
+  }
+  
+  .textConversa audio {
+    animation: fade-in .4s ease-out;
+  }
+
+  #avatar {
+    position: relative;
+    width: 28px;
+    margin-top: -9px;
+    height: 28px;
+    margin-left: -47px;
+    margin-right: 14px;
+    border-radius: 50%;
+  }
+
+  #chat-user-input {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  #chat-user-input input,
+  #chat-user-input input:focus-visible {
+    border-radius: 5px;
+    min-height: 35px;
+    max-width: 270px;
+    width: 100%;
+    border-style: none;
+    outline: 0;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .chat-user-button {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-right: 15px;
+    gap: 8px;
+    animation: fadeIn 0.5s;
+  }
+
+  .chat-user-input {
+    margin: 20px;
+  }
+
+  .chat-user-input input:disabled {
+    background-color: #fff;
+    opacity: .9;
+  }
+
+  .chat-user-button button,
+  .chat-user-input button {
+    background-color: #0d9488;
+    height: 44px;
+    border-radius: 5px;
+    color: white;
+    border-color: #0d9488;
+    border-style: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: .4s all;
+  }
+
+  .chat-user-button button:disabled,
+  .chat-user-button button:disabled:hover,
+  .chat-user-input button:disabled,
+  .chat-user-input button:disabled:hover {
+    background-color: #e1ffc7;
+    color: #303235;
+    opacity: .7;
+    cursor: text;
+  }
+
+  iframe {
+    width: 405px;
+    height: 225px;
+  }
+
+  
+
+.wave {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.ball {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: gray;
+  animation: waveAnimation 2s ease-in-out infinite;
+}
+
+@keyframes waveAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ball:nth-child(1) {
+  animation-delay: -0.5s;
+}
+
+.ball:nth-child(2) {
+  animation-delay: -1s;
+}
+
+.ball:nth-child(3) {
+  animation-delay: -1.5s;
+}
+
+
+@media screen and (max-width: 820px) {
+    .chat-container {
+      margin: 0;
+      position: relative;
+      padding-top: 60px;
+    }
+
+    .chat-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    #backgroundChatBot {
+      background-image: none;
+    }
+
+    body {
+      background-image: url('https://i.ibb.co/64XCBTz/background-Whatsapp.png');
+      background-repeat: repeat;
+    }
+
+    .navbar {
+      position: fixed;
+      right: 0;
+      left: 0;
+      top: 0
+    }
+
+    .border-chat {
+      border: 0px solid #DBD4CA;
+      margin: 0px;
+    }
+
+    .chat-top {
+      display: none;
+    }
+
+    footer {
+      background-color: #f1f2f6;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .text-area-chat {
+      padding: 10px 0px 5px 10px;
+      margin-left: 5px;
+      width: 90%;
+    }
+
+    iframe {
+      width: 271px !important;
+      height: 153px !important;
+
+    }
+
+    #chatbox {
+      height: calc(100vh - 125px);
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+    }
+
+    .border-chat {
+      height: 100%;
+    }
+
+    .seta-position {
+      width: 30px;
+      padding-left: 1%;
+      margin-top: -4px;
+    }
+
+  }
+
+  .textConversa video {
+    margin-left: 65px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  iframe {
+    width: 405px;
+    height: 225px;
+  }
+
+  .chat-user-button button:active,
+  .chat-user-button button:hover {
+    background-color: #016955;
+    border-color: #016955;
+
+  }
+
+  #chat-user-input p {
+    margin: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    background: #d4fed5;
+    position: absolute;
+    margin-left: 14px;
+    margin-top: 0px;
+    color: black;
+    font-size: 14pt;
+    min-width: 150px;
+    width: 20%;
+    right: 18%;
+    width: fit-content;
+  }
+
+  .textConversa a {
+    margin-left: 65px;
+    color: #0c91bd;
+    font-size: 14pt;
+    width: fit-content;
+  }
+
+  #avatar {
+    position: relative;
+    width: 28px;
+    margin-top: -9px;
+    height: 28px;
+    margin-left: -47px;
+    margin-right: 14px;
+
+  }
+
+  .avatarStyle {
+    border-radius: 80px;
+  }
+
+  #user-bt {
+    color: black;
+    border: 0px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #ffffff;
+    padding: 14px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 150px;
+    border-radius: 20px;
+    color: 4e5166;
+  }
+
+  #user-bt:hover {
+    background-color: #d4fed6;
+  }
+
+  #bot-bt {
+    color: white;
+    border: 0px;
+    cursor: pointer;
+    font-size: 20px;
+    background: linear-gradient(90deg, rgba(0, 132, 198, 0.8)10%, rgba(0, 81, 156, 0.8) 100%);
+    padding: 30px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    color: 4e5166;
+  }
+
+  #bot-bt:hover {
+    background-color: #070c12;
+  }
+
+  #question {
+    float: right;
+    margin: 4px;
+    padding: 5px;
+    border-radius: 30px;
+  }
+
+  #time {
+    position: absolute;
+    font-family: tahoma bold;
+    font-size: 8pt;
+    padding: 7px;
+    border-radius: 30px;
+    right: 20px;
+    margin-top: -20px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  #time-user {
+    position: absolute;
+    font-family: tahoma bold;
+    font-size: 8pt;
+    padding: 7px;
+    border-radius: 30px;
+    right: 20px;
+    margin-top: 37px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .textConversa img {
+    opacity: 0;
+    transform: scale(0.8);
+    /* Starting scale to create a smooth growth effect */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Adjust the transition duration as needed */
+  }
+
+  .textConversa img.loaded {
+    opacity: 1;
+    transform: scale(1);
+    /* The final scale of the image */
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <img class="chat-user-photo" src="https://i.postimg.cc/mDYstDVd/host-Avatar.jpg" />
+    <div class="chat-info-container">
+      <span class="chat-user-name">Feirão Serasa
+        <svg viewBox="0 0 18 18" height="18" width="18" preserveAspectRatio="xMidYMid meet" class="" version="1.1"
+          x="0px" y="0px" enable-background="new 0 0 18 18" xml:space="preserve">
+          <polygon id="Star-2" fill="#00DA60"
+            points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9 ">
+          </polygon>
+          <polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4 "></polygon>
+        </svg>
+      </span>
+      <span class="chat-user-status">online</span>
+    </div>
+  </div>
+
+  <div id="chatbox" class="chatbox">
+    <div id="chat-text" class="textConversa business-account">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#4b5e63" fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75ZM12 7C12.5523 7 13 7.44772 13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7Z"></path>
+        </svg>
+      <p>Esta é uma conta comercial e não recebe ligações</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+  integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+  integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  // https://typebot.io/my-typebot-2zwblcs
+
+    async function chatInteraction() {
+      async function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      function addCheckIcon() {
+        var svgString = `<svg id="checkIcon" class="checkIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.626 24.684" style="position: absolute;bottom: 0;right: 5px;" height="20" width="18">
+          <g id="Grupo_1" data-name="Grupo 1" transform="translate(-708.9 -601.383)">
+            <path id="Caminho_6" data-name="Caminho 6" d="M728.035,623.468l1.382,1.482,17.929-20.334" transform="translate(-1.937 -1.117)" fill="none" stroke="#07c654" stroke-linecap="round" stroke-width="3"></path>
+            <path id="Caminho_7" data-name="Caminho 7" d="M712.017,616.07l7.088,8.039,17.757-20.14" transform="translate(-1 -0.469)" fill="none" stroke="#07c654" stroke-linecap="round" stroke-width="3"></path>
+          </g>
+        </svg>`;
+
+        var tempContainer = document.createElement('div');
+        tempContainer.innerHTML = svgString;
+
+        var svgElement = tempContainer.firstChild;
+        return svgElement;
+      }
+
+      function loadingWave() {
+        return `
+          <div class="wave">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+          </div>
+        `;
+      }
+
+      
+      function calculateElementWidth(text) {
+        const averageCharacterWidth = 8.6; // Valor aproximado da largura de um caractere em pixels
+        const screenWidth = window.innerWidth;
+        let calculatedWidth;
+
+        if (screenWidth < 567) {
+          calculatedWidth = screenWidth - 40;
+        } else {
+          const widthFromText = text.length * averageCharacterWidth;
+          calculatedWidth = Math.min(widthFromText, 684);
+        }
+
+        return calculatedWidth;
+      }
+
+      async function addVideoInChat(videoURL) {
+        var textElement = document.createElement('div');
+        textElement.setAttribute("id", "chat-text-video");
+        textElement.classList.add("textConversa");
+
+        var video = document.createElement('iframe');
+        video.src = videoURL;
+        video.controls = true;
+        video.muted = false;
+        video.height = 240;
+        video.width = 320;
+
+        var checkIcon = await addCheckIcon();
+
+        document.getElementById("chatbox").appendChild(textElement);
+        
+        textElement.innerHTML = loadingWave(); // Loading
+        await delay(1000);
+        textElement.querySelector('.wave').remove(); // Remove oading
+        await delay(400);
+
+        textElement.appendChild(video);
+        textElement.style.width = "fit-content";
+        textElement.appendChild(checkIcon);
+
+        delay(1500);
+        scrollDown();
+      }
+
+      async function addAudioInChat(audioSrc) {
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        var textElement = document.createElement('div');
+        textElement.setAttribute("id", "chat-text");
+        textElement.classList.add("textConversa");
+
+        var audioContainer = document.createElement('div');
+        audioContainer.classList.add("audio-container"); // Adicione uma classe para o contêiner de áudio
+
+        var audio = document.createElement('audio');
+        audio.setAttribute("controls", "controls");
+        audio.setAttribute("autoplay", "autoplay");
+        audio.setAttribute("src", audioSrc);
+        var checkIcon = await addCheckIcon();
+
+        document.getElementById("chatbox").appendChild(textElement);
+
+        textElement.innerHTML = loadingWave(); // Loading
+        await delay(1000);
+        textElement.querySelector('.wave').remove(); // Remove oading
+        await delay(400);
+        audioContainer.appendChild(audio); // Coloque o áudio dentro do contêiner
+
+        textElement.appendChild(audioContainer); // Adicione o contêiner de áudio ao elemento de texto
+        textElement.appendChild(checkIcon);
+        textElement.style.width = "fit-content";
+
+        delay(1500);
+        scrollDown();
+      }
+
+
+      async function addImageInChat(imageSrc) {
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        var textElement = document.createElement('div');
+        textElement.setAttribute("id", "chat-text");
+        textElement.classList.add("textConversa");
+
+        var image = document.createElement('img');
+        image.setAttribute("src", imageSrc);
+        image.onload = () => {
+          image.classList.add("loaded"); // Add the "loaded" class to trigger the transitions
+        };
+        var checkIcon = await addCheckIcon();
+
+        document.getElementById("chatbox").appendChild(textElement);
+
+        textElement.innerHTML = loadingWave(); // Loading
+        await delay(2000);
+        textElement.querySelector('.wave').remove(); // Remove oading
+        await delay(400);
+        textElement.appendChild(image);
+        textElement.appendChild(checkIcon);
+        textElement.style.width = "fit-content";
+
+        await delay(1000);
+        scrollDown();
+      }
+
+      async function addTextInChat(text) {
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+        var textElement = document.createElement('div');
+        textElement.setAttribute("id", "chat-text");
+        textElement.classList.add("textConversa");
+
+        var p = document.createElement('p');
+        var checkIcon = await addCheckIcon();
+        var newWidth = calculateElementWidth(text);
+        
+        document.getElementById("chatbox").appendChild(textElement);
+
+        textElement.innerHTML = loadingWave(); // Loading
+        await delay(2000);
+        textElement.querySelector('.wave').remove(); // Remove oading
+        textElement.style.width = newWidth + 'px'; // adiciona largura no container do texto
+
+        await delay(400);
+        textElement.appendChild(p); // Adiciona o elemento P
+        textElement.appendChild(checkIcon);
+        p.innerHTML  = text; // Adiciona o texto
+
+        await delay(1000);
+        scrollDown();
+      }
+
+      async function addInputText(placeholder, storageName, func) {
+        var div = document.createElement('div');
+        div.setAttribute("id", "chat-user-input");
+        div.setAttribute("class", "chat-user-input");
+
+        var input = document.createElement('input');
+        input.setAttribute("id", "text")
+        input.setAttribute("placeholder", placeholder);
+        input.classList.add("inputStyle");
+
+        div.appendChild(input);
+
+        var button = document.createElement('button');
+        button.classList.add("form-control");
+        button.innerHTML = "Enviar";
+        button.onclick = function() {
+          var inputValue = input.value;
+          localStorage.setItem(storageName, inputValue);
+          input.disabled = true;
+          button.disabled = true;
+          func();
+        };
+
+        div.appendChild(button);
+
+        document.getElementById("chatbox").appendChild(div);
+
+        await delay(500);
+        scrollDown();
+      }
+
+      async function linkDeCompra() {
+        var div = document.createElement('div');
+        div.setAttribute("class", "chat-user-button");
+
+        var bt = document.createElement("button");
+        bt.classList.add("form-control");
+        bt.innerHTML = "COMPRAR AGORA!";
+
+        bt.addEventListener("click", function () {
+          window.open('https://go.perfectpay.com.br/PPU38CM69OP', '_blank');
+        });
+
+        div.appendChild(bt);
+
+        document.getElementById("chatbox").appendChild(div);
+
+        delay(1000);
+        scrollDown();
+      }
+
+      async function typeWriter(txt, div) {
+        let i = 0;
+
+        typeWriterHandler = () => {
+          txt = txt.slice(1);
+          typeWriter(txt, div);
+        }
+        if (i < txt.length) {
+          div.innerHTML += txt.charAt(i)
+          i++;
+          setTimeout(typeWriterHandler, 20);
+        }
+      }
+
+      async function scrollDown() {
+        var objDiv = document.getElementById("chatbox");
+        objDiv.scrollTo({
+          top: objDiv.scrollHeight + 100,
+          behavior: "smooth"
+        });
+
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth"
+        });
+      }
+
+      async function createButton(buttonText1, buttonText2, func) {
+        var div = document.createElement('div');
+        div.setAttribute("class", "chat-user-button");
+
+        var button1 = document.createElement('button');
+        button1.classList.add("form-control");
+        button1.innerHTML = buttonText1;
+        button1.onclick = async function () {
+          button1.disabled = true; // Desativa o botão após o clique
+          if (button2) {
+            button2.disabled = true; // Desativa o botão após o clique
+          }
+          await func(); // Chama a função passada como argumento
+        };
+
+        div.appendChild(button1);
+
+        var button2 = null;
+        if (buttonText2) {
+          button2 = document.createElement('button');
+          button2.classList.add("form-control");
+          button2.innerHTML = buttonText2;
+          button2.onclick = async function () {
+            button1.disabled = true; // Desativa o botão após o clique
+            button2.disabled = true; // Desativa o botão após o clique
+            await func(); // Chama a função passada como argumento
+          };
+          div.appendChild(button2);
+        }
+
+        document.getElementById("chatbox").appendChild(div);
+        
+        await delay(500);
+        scrollDown();
+      }
+
+
+   
+      // ************************************** O CHAT COMEÇA AQUI **************************************
+
+      async function primeiroChat() {
+        addVideoInChat("https://www.youtube.com/embed/zKqarsxDg0c?si=EyxehG48QBC6E_Tk");
+        await delay(2000);
+        addTextInChat("Olá, seja bem vindo ao <b>Feirão Limpa Nome Serasa!</b>");
+
+        // Adiciona texto no chat
+        await delay(2000);
+        addTextInChat("Gostaria de aproveitar os <b>últimos dias</b> do Feirão Limpa Nome Serasa, <b>quitar suas dívidas</b> e ter seu <b>nome limpo novamente</b>?");
+
+        // Adiciona botão na tela
+        await delay(2000);
+        createButton("EU QUERO!", null, segundoChat);
+      }
+
+      // ************************************** Segundo Chat **************************************
+      async function segundoChat() {
+        await delay(2000);
+        addImageInChat("https://s3.fr-par.scw.cloud/typebot/public/typebots/cll3u3ixb004umo0ffzpq4hti/blocks/ixanzkk0wflf1gfvpzzyy3w7?v=1691591968901");
+
+        await delay(2000);
+        addAudioInChat("https://s3.fr-par.scw.cloud/typebot/public/typebots/cll3u3ixb004umo0ffzpq4hti/blocks/zposc07a7qgg0uxhf25z4cyp?v=1691591984570");
+
+        await delay(2000);
+        addTextInChat("O <b>Feirão Limpa Nome</b> foi extendido para te ajudar a se livrar de uma vez por todas das suas dívidas.");
+
+        await delay(2000);
+        addTextInChat("Aqui na <b>Serasa</b> o atendimento é online, simples e rápido.");
+
+        await delay(2000);
+        addTextInChat("Negocie dívidas com as seguintes empresas:");
+
+        await delay(2000);
+        addImageInChat("https://s3.fr-par.scw.cloud/typebot/public/typebots/cll3u3ixb004umo0ffzpq4hti/blocks/blopbb1to52sb7tl6oeg47jz?v=1691592034187");
+
+        await delay(2000);
+        addTextInChat("Para continuar, por favor informe seu <b>CPF:</b>");
+
+        await delay(2000);
+        await addInputText('Digite seu CPF aqui', 'cpf', terceiroChat);
+
+      }
+
+      // ************************************** Terceiro Chat **************************************
+      async function terceiroChat() {
+        await delay(2000);
+        await addInputText('Digite o seu NOME COMPLETO', 'nomeCompleto', quartoAssunto);
+      }
+
+      // ************************************** Quarto Chat **************************************
+      async function quartoAssunto() {
+        await delay(2000);
+        addTextInChat("<i>Por favor, aguarde enquanto nosso sistema analisa as informações...</i>");
+        
+        await delay(2000);
+        addImageInChat("https://s3.fr-par.scw.cloud/typebot/public/typebots/cll3u3ixb004umo0ffzpq4hti/blocks/f1yx7dvi0t44nfhqedfohybh?v=1691592125266");
+        
+        var cpf = localStorage.getItem('cpf');
+        var nomeCompleto = localStorage.getItem('nomeCompleto');
+        await delay(2000);
+        addTextInChat("Identificamos <b>pendências</b> no sistema relacionadas a valores que variam entre <b>R$898,74 a R$9.742,94</b> no <b>NOME " + nomeCompleto +"</b> e <b>CPF " + cpf + "</b>. De acordo com nossos registros, a situação está atualmente <b>Negativada!</b>");
+
+        await delay(2000);
+        addTextInChat("Boas notícias "+ nomeCompleto +", <b>SOMENTE HOJE</b> você recebeu um <b>SUPER DESCONTO de 98%</b> para quitar sua dívida");
+
+        await delay(2000);
+        addTextInChat("Você gostaria de <b>quitar sua dívida por apenas R$ 56,97 à vista</b> ou <b>11x R$ R$6,15 no cartão</b> e ter seu <b>nome limpo novamente</b>?");
+
+        await delay(2000);
+        createButton("SIM QUERO QUITAR MINHAS DÍVIDAS!", null, quintoAssunto);
+      }
+
+      // ************************************** Quinto Chat **************************************
+      async function quintoAssunto() {
+        var cpf = localStorage.getItem('cpf');
+        await delay(2000);
+        addTextInChat("Lembrando que o <b>não pagamento</b> do acordo pode <b>ocasionar restrições ainda maiores em seu CPF " + cpf + "</b>!");
+
+        await delay(2000);
+        addTextInChat("Após o pagamento, o Serasa pede até <b>2 horas</b> para quitar suas dívidas com os credores e você terá seu CPF regularizado novamente!");
+
+        await delay(2000);
+        createButton("QUERO LIMPAR MEU NOME", null, sextoAssunto);
+      }
+
+      // ************************************** Sexto Chat **************************************
+      async function sextoAssunto() {
+        await delay(2000);
+        addTextInChat("<i>Aguarde um instante, você será redirecionado ao pagamento...</i>");
+
+        await delay(8000);
+        window.location = 'https://go.perfectpay.com.br/PPU38CMSR1H'; // Pagina de compra
+       
+        // linkDeCompra();
+      }
+
+      primeiroChat();
+    }
+    chatInteraction();
+  </script>
